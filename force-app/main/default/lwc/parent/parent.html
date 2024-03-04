@@ -31,4 +31,22 @@
             </lightning-layout-item>
         </lightning-layout>
     </lightning-card>
+    <lightning-card
+        title="Parent to Child Communication" 
+        icon-name="utility:people">
+        <lightning-layout-item padding="around-small" size="6">
+            <div class="slds-box_small">
+            <b> Message</b>
+            <lightning-input variant="label-hidden" onchange= {handleMessage} padding="around-small" size="6"></lightning-input>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6">
+            <div class="slds-box_small">
+                <b> Child 3</b>
+                <div class="slds-box slds-m-around_small">
+                    <c-child3 output = "Default text"></c-child3>
+                </div>
+            </div>
+        </lightning-layout-item>
+    </lightning-card>
 </template>

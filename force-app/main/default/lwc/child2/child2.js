@@ -1,6 +1,9 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
+import {CurrentPageReference } from 'lightning/navigation';
+import { fireEvent } from 'c/pubsub';
 
 export default class Child2 extends LightningElement {
+    @wire(CurrentPageReference) pageRef;
     eventNumber = 1;
 
     handleNumberChange(event) {
@@ -13,6 +16,8 @@ export default class Child2 extends LightningElement {
         this.dispatchEvent(
             new CustomEvent('clicked2', { detail: this.eventNumber } 
         ));
+
+        fireEvent(this.pageRef, 'PubSubc2Toc3', this.eventNumber);
     }
 
 }

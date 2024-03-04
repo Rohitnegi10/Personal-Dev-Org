@@ -15,4 +15,7 @@ export default class Parent extends LightningElement {
         this.eventName = 'Child button clicked';
         console.log('Simple Child Button Clicked');
     }
+    handleMessage(event){
+        this.template.querySelector('c-child3').messageToDisplay(event.target.value);
+    }
 }
