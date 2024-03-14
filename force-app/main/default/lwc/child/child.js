@@ -1,13 +1,10 @@
-import {LightningElement} from 'lwc';
+import { LightningElement, api } from 'lwc';
 
-export default class extends LightningElement{
+export default class Child extends LightningElement {
+    @api firstName;
+    @api lastName;
 
-    eventName = 'Click button to fire event'
-    handleClick(){
-        this.eventName = 'Child Button Clicked'
-        this.dispatchEvent(
-            new CustomEvent('clicked',{detail: 'hello there'}
-        ));
-        console.log('event dispatched');
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
     }
 }
