@@ -1,15 +1,21 @@
 <template>
-    <lightning-card>
-        <template if:true={contacts.data}>
-            <lightning-datatable
-                key-field="Id"
-                data={contacts.data}
-                columns={columns}
+    <template lwc:if={contacts.data}>
+        <template for:each={contacts.data} for:item="contact">
+            <a
+                href="#"
+                key={contact.Id}
+                data-contact-id={contact.Id}
+                onclick={handleSelect}
             >
-           </lightning-datatable>
+                <lightning-layout>
+                    <lightning-layout-item>
+                        <img src={contact.Picture__c} alt="Profile photo" />
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="horizontal-small">
+                        <p>{contact.Name}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </a>
         </template>
-        <template lwc:if = {errors}>
-            <p>{errors}</p>
-        </template>
-    </lightning-card>
+    </template>
 </template>
